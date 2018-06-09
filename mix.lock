@@ -1,0 +1,3 @@
+%{
+  "lfe": {:hex, :lfe, "1.2.0", "257708859c0a6949f174cecee6f08bb5d6f08c0f97ec7b75c07072014723ecbc", [:rebar3], [], "hexpm"},
+}
