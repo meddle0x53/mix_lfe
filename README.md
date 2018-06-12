@@ -10,61 +10,62 @@ Also Elixir developers should try LFE! This little project has the purpose to ma
 
 ## Installation
 
-You can create a Mix project with `mix new <project_name>` and add this as dependency:
+Install the Mix plugin for LFE if it isn't installed already:
 
-```elixir
-def deps do
-  [
-    {:mix_lfe, "0.2.0-rc1"}
-  ]
-end
+```
+mix archive.install https://github.com/meddle0x53/mix_lfe_new/releases/download/v0.1.0/mix_lfe_new-0.1.0.ez
+```
+
+You can create a LFE project with:
+
+```
+mix lfe.new <project_name>
 ```
 
 The project uses the rebar3 `lfe` package to compile LFE source files, so the following will be necessary:
 
 1. Navigate to the new project root.
-2. Run `mix deps.get`.
-3. Run `mix local.rebar` (if you don't have rebar3 installed).
-4. Compile LFE : `(cd deps/lfe && ~/.mix/rebar3 compile)`. You can replace `~/.mix/rebar3` here with the location it is installed on your machine.
-5. Create a `src` folder and add your `*.lfe` sources there.
-6. Run `mix compile.lfe` to compile them. Now you'll be able to use the compiled modules with `iex -S mix`.
+2. Run `mix lfe.deps.setup`.
+3. Now LFE code, located in the `src` folder of the project can be compiled with `mix compile`. You'll be able to use the compiled modules with `iex -S mix`.
 
 To use the compiled modules with the LFE REPL, you can run:
 
-```bash
+```
 ./deps/lfe/bin/lfe -pa _build/dev/lib/*/ebin
 ```
 
-Also if you want to just run `mix compile` add `compilers: Mix.compilers() ++ [:lfe]` to the list returned by `project/0` which is defined in your `mix.exs`.
+The project can be created and set up in one command like this:
+
+```
+mix lfe.new <project_name> --setup
+```
 
 ## Using it for running tests
 
 The compiler can compile and run [ltest](https://github.com/lfex/ltest) tests.
 Just put all the tests in the `test` folder of the project and run:
 
-```bash
-mix test.lfe
+```
+mix lfe.test
 ```
 
-Works with umbrella applications.
+Works with umbrella applications, meaning that some of applications in the umbrella can be LFE ones.
 
 ## Example projects
 
-TODO
+In progress...
 
 ## TODO
 
 The tests of this project mirror the ones for the Erlang Mix compiler.
 For now the source is very simple and uses  an [idea](https://github.com/elixir-lang/elixir/blob/e1c903a5956e4cb9075f0aac00638145788b0da4/lib/mix/lib/mix/compilers/erlang.ex#L20) from the Erlang Mix compiler.
-All works well, but requires some manual work and doesn't support LFE compiler fine tunning, so that's what we'll be after next.
+All works well, but requires some manual work and doesn't support LFE compiler fine tuning, so that's what we'll be after next.
 
-1. Make it possible to add options when running `mix test.lfe`.
-2. Automate the installation & setup process in a way. Maybe by using something similar to the Phoenix generator tasks.
-3. Pass more options to the LFE compiler, using mix configuration.
-4. Use LFE syntax for configuration (not sure this is needed, really).
-5. More and more examples.
-6. A mix task or binary running the LFE REPL in the context of the compiled artifacts.
-7. Add CI to this project.
+1. Make it possible to add options when running `mix lfe.test`. Work on making stable versions by using another test runner/library or contacting the `ltest` maintainers.
+2. Pass more options to the LFE compiler, using mix configuration.
+3. More and more examples.
+4. A mix task or binary running the LFE REPL in the context of the compiled artifacts.
+5. Add CI to this project.
 
 ## License
 

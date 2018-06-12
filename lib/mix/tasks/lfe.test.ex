@@ -1,10 +1,12 @@
-defmodule Mix.Tasks.Test.Lfe do
+defmodule Mix.Tasks.Lfe.Test do
   use Mix.Task.Compiler
   import Mix.Compilers.Lfe
 
   @recursive true
   @manifest "test.lfe"
   @switches [force: :boolean, all_warnings: :boolean]
+
+  @shortdoc "Runs a LFE project's tests"
 
   @moduledoc """
   Compiles the source LFE source files of the project, using `Mix.Compilers.Lfe`
