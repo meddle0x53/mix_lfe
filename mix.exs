@@ -1,7 +1,7 @@
 defmodule MixLfe.MixProject do
   use Mix.Project
 
-  @version "0.2.0-rc2"
+  @version "0.2.0-rc3"
 
   def project do
     [
@@ -10,6 +10,7 @@ defmodule MixLfe.MixProject do
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       description: "A LFE compiler for Mix",
+      compilers: Mix.compilers() ++ [:lfe],
       docs: [
         extras: ["README.md"],
         main: "readme",
