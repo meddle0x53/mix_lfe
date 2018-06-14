@@ -13,7 +13,7 @@ Also Elixir developers should try LFE! This little project has the purpose to ma
 Install the Mix plugin for LFE if it isn't installed already:
 
 ```
-mix archive.install https://github.com/meddle0x53/mix_lfe_new/releases/download/v0.1.0/mix_lfe_new-0.2.0.ez
+mix archive.install https://github.com/meddle0x53/mix_lfe_new/releases/download/v0.2.0/mix_lfe_new-0.2.0.ez
 ```
 
 You can create a LFE project with:
